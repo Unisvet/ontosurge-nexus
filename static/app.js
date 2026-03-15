@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 downloadImageBtn.href = eventData.data;
                                 visualizeContainer.style.display = 'block';
                                 visualizeLoading.style.display = 'none';
+                                visualizeBtn.style.display = 'block'; // Make button available for re-rolls
                             }
                         } catch (e) {
                             console.error("Error parsing SSE chunk:", chunk, e);
