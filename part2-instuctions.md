@@ -37,7 +37,7 @@ Cloud Run provides a secure, auto-scaling HTTPS endpoint perfect for robust depl
 
 1. Create a `Dockerfile` optimized for `uv`:
 ```dockerfile
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:0.4 /uv /bin/uv
