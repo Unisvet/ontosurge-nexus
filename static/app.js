@@ -151,14 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                             } else if (eventData.type === 'env_chunk') {
                                 let formattedData = eventData.data.replace(/===\[ ENVIRONMENT RENDER \]===/g, '<br><br><span style="color: var(--accent); font-weight: bold; font-family: \'Orbitron\', sans-serif;">===[ ENVIRONMENT RENDER ]===</span><br>');
+                                formattedData = formattedData.replace(/\n/g, '<br>'); // Render newlines as HTML breaks
                                 realityRender.innerHTML += formattedData;
                             } else if (eventData.type === 'char_chunk') {
                                 let formattedData = eventData.data.replace(/===\[ ENTITY SUBCONSCIOUS \]===/g, '<br><br><span style="color: var(--accent); font-weight: bold; font-family: \'Orbitron\', sans-serif;">===[ ENTITY SUBCONSCIOUS ]===</span><br>');
+                                formattedData = formattedData.replace(/\n/g, '<br>'); // Render newlines as HTML breaks
                                 realityRender.innerHTML += formattedData;
                             } else if (eventData.type === 'error') {
                                 realityRender.innerHTML += "<br><br><span style='color: var(--warning);'>[Nexus Error]: " + eventData.data + "</span>";
                                 if (eventData.data.includes("Background image")) {
                                     visualizeLoading.style.display = 'none';
+                                    visualizeBtn.style.display = 'block'; // Show button again so they can manually retry
                                 }
                             } else if (eventData.type === 'image_url') {
                                 visualizedImage.src = eventData.data;
@@ -172,8 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-
-            visualizeContainer.style.display = 'none';
 
         } catch (error) {
             console.error("Fetch Error:", error);

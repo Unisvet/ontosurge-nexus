@@ -21,7 +21,7 @@ load_dotenv(override=True)
 app = FastAPI(title="Ontosurge Nexus - Architect's Console API")
 
 # Mount the static directory to serve the frontend UI
-app.mount("/console", StaticFiles(directory="static", html=True), name="static")
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 # --- 1. ANTIGRAVITY SKILLS (Model Context Protocol / MSP Connectors) ---
 
@@ -187,7 +187,7 @@ async def manipulate_reality(cmd: ArchitectCommand):
         img_task = asyncio.create_task(generate_image_bg())
 
         # 3. RUN CHARACTER AGENT (Static Subconscious)
-        yield f"data: {json.dumps({'type': 'char_chunk', 'data': '\\n\\n===[ ENTITY SUBCONSCIOUS ]===\\n'})}\n\n"
+        yield f"data: {json.dumps({'type': 'char_chunk', 'data': '\n\n===[ ENTITY SUBCONSCIOUS ]===\n'})}\n\n"
         char_prompt = f"TARGET ENTITY: {cmd.target_entity}\nIMPACT ANALYSIS: {root_data.get('impact_analysis', '')}\nNAI DISSONANCE: {root_data.get('nai_dissonance_score', 0)}"
         char_msg = types.Content(role="user", parts=[types.Part.from_text(text=char_prompt)])
         char_agen = runner_char.run_async(user_id="architect", session_id=session_id, new_message=char_msg)
