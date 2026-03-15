@@ -21,7 +21,7 @@ load_dotenv(override=True)
 app = FastAPI(title="Ontosurge Nexus - Architect's Console API")
 
 # Mount the static directory to serve the frontend UI
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+# (Moved to the end of the file to prevent overriding API routes)
 
 # --- 1. ANTIGRAVITY SKILLS (Model Context Protocol / MSP Connectors) ---
 
@@ -257,3 +257,6 @@ async def visualize_space(req: VisualizeRequest):
         return {"error": str(e)}
         
     return {"error": "Image generation failed."}
+
+# Mount the static directory LAST so that API routes are prioritized
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

@@ -151,11 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                             } else if (eventData.type === 'env_chunk') {
                                 let formattedData = eventData.data.replace(/===\[ ENVIRONMENT RENDER \]===/g, '<br><br><span style="color: var(--accent); font-weight: bold; font-family: \'Orbitron\', sans-serif;">===[ ENVIRONMENT RENDER ]===</span><br>');
-                                formattedData = formattedData.replace(/\n/g, '<br>'); // Render newlines as HTML breaks
+                                formattedData = formattedData.replace(/\\n/g, '<br>').replace(/\n/g, '<br>'); // Render both explicit text breaks and actual newline control bytes
                                 realityRender.innerHTML += formattedData;
                             } else if (eventData.type === 'char_chunk') {
                                 let formattedData = eventData.data.replace(/===\[ ENTITY SUBCONSCIOUS \]===/g, '<br><br><span style="color: var(--accent); font-weight: bold; font-family: \'Orbitron\', sans-serif;">===[ ENTITY SUBCONSCIOUS ]===</span><br>');
-                                formattedData = formattedData.replace(/\n/g, '<br>'); // Render newlines as HTML breaks
+                                formattedData = formattedData.replace(/\\n/g, '<br>').replace(/\n/g, '<br>'); // Render both explicit text breaks and actual newline control bytes
                                 realityRender.innerHTML += formattedData;
                             } else if (eventData.type === 'error') {
                                 realityRender.innerHTML += "<br><br><span style='color: var(--warning);'>[Nexus Error]: " + eventData.data + "</span>";
