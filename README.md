@@ -28,6 +28,9 @@ This project abandons the monolithic "chatbot" design in favor of a deeply speci
 4. **The Dynamic Topology (`environment_renderer.py`)**: Processes the mathematical "Impact Analysis" to rip apart the sensory physics of the surrounding location (e.g., rivers flowing backwards, floating architecture).
 5. **The Visual Synthesizer (`image_agent.py`)**: Uses `gemini-3.1-flash-image-preview` in a parallel processing thread to manifest a high-fidelity image of the broken, localized reality based directly on the Environment Agent's descriptions.
 
+### System Architecture Diagram
+A full visual representation of the FastAPI server, Google ADK agents, and Gemini LLM interactions can be found in the [architecture-diagram.md](./architecture-diagram.md) file.
+
 ---
 
 ## ⚡ Real-Time Streaming (SSE)
