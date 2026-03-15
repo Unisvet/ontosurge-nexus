@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontosurge Nexus - Architect's Console</title>
+    <!-- Use Google Fonts for a sleek, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="glow-box">
+            <h1>ONTOSURGE NEXUS</h1>
+            <h2>ARCHITECT'S CONSOLE [N-VAE ENGINE]</h2>
+        </header>
+
+        <div class="dashboard">
+            <!-- Left Column: Controls -->
+            <div class="controls glow-box">
+                <h3>[ ONTOLOGICAL DIALS ]</h3>
+                
+                <div class="input-group">
+                    <label for="target_entity">Target Entity</label>
+                    <div style="display: flex; gap: 10px; align-items: stretch;">
+                        <input type="text" id="target_entity" value="The Weaver of Whispers" placeholder="e.g. The Weaver of Whispers" style="flex: 1;">
+                        <button id="forgeEntityBtn" style="padding: 0 15px; background: #0d1a26; border: 1px solid #00f0ff; color: #00f0ff; cursor: pointer; border-radius: 4px; font-family: 'Orbitron', sans-serif; transition: background 0.3s;">FORGE NEW</button>
+                    </div>
+                    <div id="forgeLoading" style="display: none; color: #00f0ff; margin-top: 5px; font-size: 0.8rem; animation: glitch 1s infinite;">Forging entity...</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="action">Architect Command</label>
+                    <textarea id="action" rows="3" placeholder="e.g. Invert Gravity">Invert Gravity</textarea>
+                </div>
+
+                <div class="dial-container">
+                    <label for="causal_adherence">Causal Adherence: <span id="causal_val" class="highlight">0.5</span></label>
+                    <input type="range" id="causal_adherence" min="0" max="1" step="0.1" value="0.5">
+                    <div class="warning" id="qnf_warning_causal" style="display: none;">⚠ QNF RISK: LOW WEIGHT</div>
+                </div>
+
+                <div class="dial-container">
+                    <label for="ethical_consistency">Ethical Consistency: <span id="ethical_val" class="highlight">0.8</span></label>
+                    <input type="range" id="ethical_consistency" min="0" max="1" step="0.1" value="0.8">
+                    <div class="warning" id="qnf_warning_ethical" style="display: none;">⚠ QNF RISK: LOW WEIGHT</div>
+                </div>
+
+                <button id="renderBtn" class="primary-btn">INITIATE GRAVITATIONAL INVERSION</button>
+            </div>
+
+            <!-- Right Column: System Output -->
+            <div class="output glow-box" style="display: flex; flex-direction: column; gap: 15px;">
+                <h3>[ SYSTEM STATE UPDATE ]</h3>
+                
+                <div class="metrics">
+                    <div class="metric">
+                        <span>QNF Triggered:</span>
+                        <span id="qnf_status" class="status-indicator">PENDING</span>
+                    </div>
+                    <div class="metric">
+                        <span>NAI Dissonance:</span>
+                        <span id="nai_score" class="status-indicator">0.0</span>
+                    </div>
+                </div>
+
+                <div class="terminal">
+                    <h4>> IMPACT ANALYSIS</h4>
+                    <pre id="impact_analysis"></pre>
+                    
+                    <h4>> REALITY RENDER</h4>
+                    <p id="reality_render"></p>
+                </div>
+                
+                <div id="loading" class="loading" style="display: none;">Rendering new reality...</div>
+
+                <!-- Visualization Controls -->
+                <div style="margin-top: 15px; border-top: 1px dashed rgba(0, 240, 255, 0.3); padding-top: 15px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <button id="visualizeBtn" style="padding: 8px 15px; background: transparent; border: 1px solid #00f0ff; color: #00f0ff; cursor: pointer; border-radius: 4px; font-family: 'Orbitron', sans-serif; transition: all 0.3s;" disabled>
+                            VISUALIZE SPACE
+                        </button>
+                        <div id="visualizeLoading" style="display: none; color: #00f0ff; font-family: 'Roboto Mono', monospace; font-size: 0.85rem; animation: glitch 1s infinite;">Synthesizing visual manifestation...</div>
+                    </div>
+                    
+                    <div id="visualizeContainer" style="display: none; margin-top: 15px;">
+                        <img id="visualizedImage" style="width: 100%; border: 1px solid #00f0ff; border-radius: 4px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);" />
+                        <div style="text-align: right; margin-top: 8px;">
+                            <a id="downloadImageBtn" href="#" download="manifestation.jpg" style="color: #00f0ff; text-decoration: none; font-size: 0.8rem; font-family: 'Roboto Mono', monospace;">↓ Save to Disk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

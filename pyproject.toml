@@ -1,0 +1,16 @@
+[project]
+name = "ontosurge-nexus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.135.1",
+    "google-adk>=1.27.0",
+    "google-api-python-client>=2.192.0",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.2",
+    "sse-starlette>=3.3.2",
+    "tzlocal>=5.3.1",
+    "uvicorn>=0.41.0",
+]
