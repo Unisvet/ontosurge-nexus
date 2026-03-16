@@ -31,6 +31,13 @@ graph TD
     %% Storage
     MockDB[("In-Memory Session Service<br/>& Mocked MCP State")]:::db
 
+    subgraph CD ["Source Deployment Pipeline"]
+        GH["GitHub Repository<br/>(main branch)"]:::client
+        Actions["GitHub Actions<br/>Deployer Service Account"]:::gemini
+        CloudBuild["Google Cloud Build<br/>Dockerization"]:::backend
+        Artifacts["Artifact Registry<br/>(cloud-run-source-deploy)"]:::db
+    end
+
     %% Connections
     Client -- "HTTP POST / SSE Stream" --> API
     API --> Orchestrator
@@ -44,4 +51,10 @@ graph TD
     CharRenderer -- "Renders Monologue" --> LLM_Pro
     
     ImgAgent -- "Threaded Request" --> LLM_Flash
+
+    %% Deployment Connections
+    GH -- "Triggers on push" --> Actions
+    Actions -- "Authenticates & Starts Build" --> CloudBuild
+    CloudBuild -- "Pushes Docker Image" --> Artifacts
+    Artifacts -- "Deploys Revision" --> Backend
 ```
