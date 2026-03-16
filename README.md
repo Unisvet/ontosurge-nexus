@@ -64,16 +64,33 @@ Open your browser to [http://localhost:8000](http://localhost:8000).
 
 ---
 
-## ☁️ Deployment (Google Cloud Run & GitHub Actions)
+## ☁️ Deployment
 
-The Ontosurge system is fully containerized for production on Google Cloud Run. We utilize **GitHub Actions** for Continuous Deployment. 
+The Ontosurge system is fully containerized for production on Google Cloud Run. You can deploy it manually via the terminal, or set up Continuous Deployment with GitHub Actions.
 
-1. Ensure your `$GEMINI_API_KEY` and `$GCP_CREDENTIALS` are saved as Repository Secrets in GitHub.
+### Option A: Manual Deployment (via CLI)
+
+1. Ensure the Google Cloud SDK (`gcloud`) is installed and authenticated.
+2. Deploy directly from source:
+```bash
+gcloud run deploy ontosurge-nexus \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --set-env-vars="GEMINI_API_KEY=your_key_here"
+```
+
+### Option B: Continuous Deployment (GitHub Actions)
+
+We utilize **GitHub Actions** for Continuous Deployment. 
+
+1. Ensure your `$GEMINI_API_KEY` and `$GCP_CREDENTIALS` (Service Account JSON Key) are saved as Repository Secrets in GitHub.
 2. Ensure the `github-actions-deployer` Service Account has the following IAM Roles:
    - `roles/artifactregistry.admin`
    - `roles/run.admin`
    - `roles/iam.serviceAccountUser`
    - `roles/cloudbuild.builds.editor`
+   - `roles/serviceusage.serviceUsageConsumer`
 3. Simply commit your code and push to `main`! The GitHub Action will automatically authenticate, build the Docker container via Cloud Build, push it to the Artifact Registry, and deploy the new revision to Cloud Run.
 
 ```bash
