@@ -45,6 +45,6 @@ More importantly, working alongside the Antigravity system taught me the true po
 
 ## 🚀 What's Next for The Ontosurge Nexus
 We're only scratching the surface of what a Narrative Meta-Physics Engine can do. Our next steps include:
-- **Persistent Memory & Databases:** Adding a database or "Memory Card" system so that gravitational inversions have lasting consequences. A shattered reality in one session should leave permanent ontological scars in the world for future narrative sessions.
+- **Persistent Memory & Databases:** Adding a database or "Memory Bank" system so that gravitational inversions have lasting consequences. A shattered reality in one session should leave permanent ontological scars in the world for future narrative sessions.
 - **NotebookLM Integration via MCP:** We plan to put the generated run artifacts and lore directly into NotebookLM using the Model Context Protocol (MCP) server. This will allow the Nexus Weaver to dynamically query a living, ever-expanding lore bible as the world evolves, ensuring deep narrative continuity even as the physics break down.
 - **Multi-Player Ontologies:** Allowing multiple users to pull the levers of reality simultaneously, creating a truly collaborative and chaotic storytelling environment.
